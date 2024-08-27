@@ -37,7 +37,6 @@
             top: 20%;
             left: 25%;
             color: #FFF;
-            
         }
 
         li {
@@ -93,7 +92,6 @@
             background-color: #0069d9;
         }
 
-        /* The Modal (background) */
         .modal {
             display: none; /* Hidden by default */
             position: fixed; /* Stay in place */
@@ -106,7 +104,6 @@
             background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
         }
 
-        /* Modal Content */
         .modal-content {
             background-color: #fefefe;
             margin: 15% auto; /* 15% from the top and centered */
@@ -117,7 +114,6 @@
             position: relative;
         }
 
-        /* Close Button */
         .close {
             color: #aaa;
             float: right;
@@ -132,7 +128,6 @@
             cursor: pointer;
         }
 
-
         .star-rating {
             display: flex;
             direction: row-reverse;
@@ -140,9 +135,11 @@
             unicode-bidi: bidi-override;
             cursor: pointer;
         }
+
         .star-rating input {
             display: none;
         }
+
         .star-rating label {
             color: #ddd;
             margin: 0;
@@ -150,9 +147,11 @@
             cursor: pointer;
             transition: color 0.2s;
         }
+
         .star-rating input:checked ~ label {
             color: #f5c518;
         }
+
         .star-rating label:hover,
         .star-rating label:hover ~ label {
             color: #f5c518;
@@ -175,71 +174,103 @@
             <li><a href="#" onclick="navigateTo('https://www.example.com/research')">- link research</a></li>
             <li><a href="#" onclick="navigateTo('https://www.example.com/information')">- link for any Information</a></li>
         </ul>
-        <button class="button" onclick="navigateTo('Article content(7).html')">Back</button>
+        <button class="button" onclick="navigateTo('index Article content(7).html')">Back</button>
        
+        <!-- Trigger/Open The Modal -->
+        <button id="openModalBtn">Evaluate now</button>
 
-
-    <!-- Trigger/Open The Modal -->
-    <button id="openModalBtn">Evaluate now</button>
-
-    <!-- The Modal -->
-    <div id="ratingModal" class="modal">
-        <!-- Modal Content -->
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h1>Star rating</h1>
-            <div class="star-rating">
-                <input type="radio" id="star5" name="rating" value="5"><label for="star5">☆</label>
-                <input type="radio" id="star4" name="rating" value="4"><label for="star4">☆</label>
-                <input type="radio" id="star3" name="rating" value="3"><label for="star3">☆</label>
-                <input type="radio" id="star2" name="rating" value="2"><label for="star2">☆</label>
-                <input type="radio" id="star1" name="rating" value="1"><label for="star1">☆</label>
+        <!-- The Modal -->
+        <div id="ratingModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h1>Star rating</h1>
+                <div class="star-rating">
+                    <input type="radio" id="star5" name="rating" value="5"><label for="star5">☆</label>
+                    <input type="radio" id="star4" name="rating" value="4"><label for="star4">☆</label>
+                    <input type="radio" id="star3" name="rating" value="3"><label for="star3">☆</label>
+                    <input type="radio" id="star2" name="rating" value="2"><label for="star2">☆</label>
+                    <input type="radio" id="star1" name="rating" value="1"><label for="star1">☆</label>
+                </div>
+                <div id="ratingResult">Please select a rating.</div>
+                <div id="averageRating">Average Rating: Loading...</div>
             </div>
-            <div id="ratingResult">Please select a rating.</div>
         </div>
-    </div>
 
-    <script>
-        // Function to navigate to a URL
-        function navigateTo(url) {
-            window.location.href = url;
-        }
+        <script>
+            // Function to navigate to a URL
+            function navigateTo(url) {
+                window.location.href = url;
+            }
 
-        // Get the modal
-        const modal = document.getElementById("ratingModal");
+            // Get the modal
+            const modal = document.getElementById("ratingModal");
 
-        // Get the button that opens the modal
-        const btn = document.getElementById("openModalBtn");
+            // Get the button that opens the modal
+            const btn = document.getElementById("openModalBtn");
 
-        // Get the <span> element that closes the modal
-        const span = document.querySelector(".close");
+            // Get the <span> element that closes the modal
+            const span = document.querySelector(".close");
 
-        // When the user clicks on the button, open the modal
-        btn.onclick = function() {
-            modal.style.display = "block";
-        }
+            // When the user clicks on the button, open the modal
+            btn.onclick = function() {
+                modal.style.display = "block";
+                // Load the average rating from server or simulate
+                loadAverageRating();
+            }
 
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-            if (event.target == modal) {
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
                 modal.style.display = "none";
             }
-        }
 
-        // Add event listeners to each star
-        document.querySelectorAll('.star-rating input').forEach(star => {
-            star.addEventListener('change', () => {
-                // Get the value of the selected star
-                const rating = document.querySelector('input[name="rating"]:checked')?.value;
-                // Update the rating result display
-                document.getElementById('ratingResult').textContent = `تم اختيار تقييم: ${rating} نجوم`;
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+
+            // Function to update the rating result display
+            function updateRatingResult() {
+                const rating = localStorage.getItem('rating');
+                if (rating) {
+                    document.getElementById('ratingResult').textContent = `تم اختيار تقييم: ${rating} نجوم`;
+                    document.getElementById(`star${rating}`).checked = true;
+                } else {
+                    document.getElementById('ratingResult').textContent = 'يرجى اختيار تقييم.';
+                }
+            }
+
+            // Add event listeners to each star
+            document.querySelectorAll('.star-rating input').forEach(star => {
+                star.addEventListener('change', () => {
+                    const rating = document.querySelector('input[name="rating"]:checked')?.value;
+                    localStorage.setItem('rating', rating);
+                    document.getElementById('ratingResult').textContent = `تم اختيار تقييم: ${rating} نجوم`;
+                    // Send rating to server or process further
+                    saveRatingToServer(rating);
+                });
             });
-        });
-    </script>
+
+            // Function to save the rating to the server
+            function saveRatingToServer(rating) {
+                // Simulate server request
+                console.log(`Saving rating ${rating} to server...`);
+                // Implement actual server request here
+            }
+
+            // Function to load average rating from server
+            function loadAverageRating() {
+                // Simulate server request
+                const averageRating = 4.2; // Replace with actual server response
+                document.getElementById('averageRating').textContent = `متوسط التقييم: ${averageRating} نجوم`;
+            }
+
+            // Initialize the rating result display when the page loads
+            window.onload = function() {
+                updateRatingResult();
+            }
+        </script>
+    </div>
 </body>
 </html>
