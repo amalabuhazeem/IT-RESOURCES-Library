@@ -5,6 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Article Content Admin Dashboard3</title>
     <style>
+        		/* الأنماط الأساسية التي تنطبق على جميع الأجهزة */
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* الأنماط للأجهزة التي عرضها أقل من 768 بكسل (مثل الهواتف الذكية) */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+  .container {
+    padding: 10px;
+  }
+}
+
+/* الأنماط للأجهزة التي عرضها بين 768 و 1024 بكسل (مثل الأجهزة اللوحية) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  body {
+    font-size: 16px;
+  }
+  .container {
+    padding: 20px;
+  }
+}
+
+/* الأنماط للأجهزة التي عرضها أكبر من 1024 بكسل (مثل أجهزة الكمبيوتر المكتبية) */
+@media (min-width: 1024px) {
+  body {
+    font-size: 18px;
+  }
+  .container {
+    padding: 30px;
+  }
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.item {
+  flex: 1 1 200px; /* يعني أن العناصر يمكن أن تنمو وتقلص مع الحفاظ على عرض لا يقل عن 200 بكسل */
+  margin: 10px;
+}
         body {
             background-color: #3E5C76;
             font-family: Arial, sans-serif;
