@@ -93,26 +93,42 @@ body {
             width: 100px;
             height: 50px;
         }
-       button {
-            background-color: #1877F2;
-            color: #fff;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 16px;
-            margin: 5px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
+       /* تصميم الأزرار بشكل موحد */
+button {
+    background-color: #1877F2;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
 
-        button:hover {
-            background-color: #155ab5;
-            transform: scale(1.05);
-        }
+/* تأثير التمرير على الأزرار */
+button:hover {
+    background-color: #155ab5;
+    transform: scale(1.05);
+}
 
-        button:active {
-            transform: scale(0.95);
-        }
+/* تأثير الضغط على الأزرار */
+button:active {
+    transform: scale(0.95);
+}
+
+/* تعديل الأزرار الخاصة */
+#note, #com, #Start, #close {
+    background-color: #1877F2;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+}
+
+/* تأثير التمرير على زر الإغلاق */
+#close:hover {
+    background-color: #155ab5;
+}
 
         #com {
             color: black;
