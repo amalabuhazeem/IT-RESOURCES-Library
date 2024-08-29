@@ -5,50 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin References</title>
     <style>
-        		/* الأنماط الأساسية التي تنطبق على جميع الأجهزة */
-body {
-  font-family: Arial, sans-serif;
-}
-
-/* الأنماط للأجهزة التي عرضها أقل من 768 بكسل (مثل الهواتف الذكية) */
-@media (max-width: 768px) {
-  body {
-    font-size: 14px;
-  }
-  .container {
-    padding: 10px;
-  }
-}
-
-/* الأنماط للأجهزة التي عرضها بين 768 و 1024 بكسل (مثل الأجهزة اللوحية) */
-@media (min-width: 768px) and (max-width: 1024px) {
-  body {
-    font-size: 16px;
-  }
-  .container {
-    padding: 20px;
-  }
-}
-
-/* الأنماط للأجهزة التي عرضها أكبر من 1024 بكسل (مثل أجهزة الكمبيوتر المكتبية) */
-@media (min-width: 1024px) {
-  body {
-    font-size: 18px;
-  }
-  .container {
-    padding: 30px;
-  }
-}
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-
-.item {
-  flex: 1 1 200px; /* يعني أن العناصر يمكن أن تنمو وتقلص مع الحفاظ على عرض لا يقل عن 200 بكسل */
-  margin: 10px;
-}
+        /* الأنماط الأساسية التي تنطبق على جميع الأجهزة */
         body {
             background-color: #2C3E50; /* Darker background for better contrast */
             font-family: Arial, sans-serif;
@@ -61,6 +18,7 @@ body {
             padding: 0;
             color: #ECF0F1; /* Light text color for readability */
         }
+
         h1 {
             color: #ECF0F1; /* Light color for the header text */
             background-color: #3498DB; /* Bright blue background for the header */
@@ -70,6 +28,7 @@ body {
             margin-bottom: 20px;
             text-align: center;
         }
+
         .container {
             width: 90%;
             max-width: 800px;
@@ -81,12 +40,13 @@ body {
             position: relative; /* Added for positioning the back button */
             padding-top: 60px; /* Added space for back button */
         }
+
         .back-button {
             position: absolute;
             top: 20px;
             left: 20px;
-            background-color: #E74C3C; /* Red background for the back button */
-            color: #ECF0F1; /* Light text color */
+            background-color: #FF6347; /* Red background for the back button */
+            color: #FFF;
             border: none;
             border-radius: 5px;
             padding: 12px 24px;
@@ -94,16 +54,19 @@ body {
             cursor: pointer;
             transition: background-color 0.3s, transform 0.2s;
         }
+
         .back-button:hover {
-            background-color: #C0392B; /* Darker red on hover */
+            background-color: #FF4500; /* Darker red on hover */
             transform: scale(1.05); /* Slight scaling effect on hover */
         }
+
         ul {
             list-style: none;
             padding: 0;
             margin: 20px 0;
             text-align: left;
         }
+
         li {
             margin-bottom: 15px;
             padding: 10px;
@@ -115,6 +78,7 @@ body {
             justify-content: space-between;
             align-items: center;
         }
+
         button {
             background-color: #3498DB; /* Blue background for buttons */
             color: #ECF0F1; /* Light text color */
@@ -126,13 +90,16 @@ body {
             margin-top: 10px;
             transition: background-color 0.3s, transform 0.2s;
         }
+
         button:hover {
             background-color: #2980B9; /* Darker blue on hover */
             transform: scale(1.05); /* Slight scaling effect on hover */
         }
+
         .form-section {
             margin-top: 20px;
         }
+
         .form-section input {
             width: calc(100% - 22px);
             padding: 10px;
@@ -142,11 +109,13 @@ body {
             color: #2C3E50;
             background-color: #ECF0F1;
         }
+
         .form-section button {
             width: 100%;
             padding: 12px;
             font-size: 18px;
         }
+
         .modal {
             display: none;
             position: fixed;
@@ -160,6 +129,7 @@ body {
             justify-content: center;
             align-items: center;
         }
+
         .modal-content {
             background-color: #FFF;
             padding: 20px;
@@ -168,18 +138,21 @@ body {
             max-width: 500px;
             box-shadow: 0 0 10px rgba(0,0,0,0.2);
         }
+
         .close {
             color: #AAA;
             float: right;
             font-size: 24px;
             font-weight: bold;
         }
+
         .close:hover,
         .close:focus {
             color: #2C3E50;
             text-decoration: none;
             cursor: pointer;
         }
+
         .star-rating {
             display: flex;
             justify-content: center;
@@ -188,9 +161,11 @@ body {
             unicode-bidi: bidi-override;
             cursor: pointer;
         }
+
         .star-rating input {
             display: none;
         }
+
         .star-rating label {
             color: #BDC3C7;
             margin: 0;
@@ -198,38 +173,33 @@ body {
             cursor: pointer;
             transition: color 0.2s;
         }
+
         .star-rating input:checked ~ label {
             color: #F39C12;
         }
+
         .star-rating label:hover,
         .star-rating label:hover ~ label {
             color: #F39C12;
         }
+
         .stats-section {
             margin-top: 20px;
         }
+
         .stats-section h2 {
             font-size: 24px;
             margin-bottom: 10px;
         }
+
         .stats-section p {
             font-size: 18px;
-        }
-        .back-button {
-            background-color: #FF6347; /* اللون السابق */
-            color: #FFF;
-            font-size: 16px;
-            padding: 10px 20px;
-            margin-top: 20px;
-        }
-        .back-button:hover {
-            background-color: #FF4500; /* اللون السابق */
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <button class="back-button" onclick="window.location.href='index Article Content Admin dashboard.html'">Back</button><!-- Added back button -->
+        <button class="back-button" onclick="goBack()">Back</button><!-- Added back button -->
         <h1>Admin References</h1>
         <div class="content-section">
             <h2>Manage References</h2>
