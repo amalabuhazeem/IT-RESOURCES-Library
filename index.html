@@ -5,51 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IT RESOURCES</title>
     <style>
-    		/* الأنماط الأساسية التي تنطبق على جميع الأجهزة */
-body {
-  font-family: Arial, sans-serif;
-}
-
-/* الأنماط للأجهزة التي عرضها أقل من 768 بكسل (مثل الهواتف الذكية) */
-@media (max-width: 768px) {
-  body {
-    font-size: 14px;
-  }
-  .container {
-    padding: 10px;
-  }
-}
-
-/* الأنماط للأجهزة التي عرضها بين 768 و 1024 بكسل (مثل الأجهزة اللوحية) */
-@media (min-width: 768px) and (max-width: 1024px) {
-  body {
-    font-size: 16px;
-  }
-  .container {
-    padding: 20px;
-  }
-}
-
-/* الأنماط للأجهزة التي عرضها أكبر من 1024 بكسل (مثل أجهزة الكمبيوتر المكتبية) */
-@media (min-width: 1024px) {
-  body {
-    font-size: 18px;
-  }
-  .container {
-    padding: 30px;
-  }
-}
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-
-.item {
-  flex: 1 1 200px; /* يعني أن العناصر يمكن أن تنمو وتقلص مع الحفاظ على عرض لا يقل عن 200 بكسل */
-  margin: 10px;
-}
-
+        /* الأنماط الأساسية */
         body {
             background-color: #6C3EB7;
             font-family: Arial, sans-serif;
@@ -75,7 +31,7 @@ body {
             border: 2px solid #6C3EB7;
         }
 
-       .styled-button {
+        .styled-button {
             background-color: #000;
             border: none;
             color: white;
@@ -96,24 +52,23 @@ body {
             background-color: #45a049;
         }
 
-        #h1 {
+        #h1, #h, #use {
             position: absolute;
-            top: 675px;
-            right: 20px;
             color: white;
             font-size: 20px;
+        }
+
+        #h1 {
+            top: 675px;
+            right: 20px;
         }
 
         #h {
-            position: absolute;
             top: 620px;
             right: 10px;
-            color: white;
-            font-size: 20px;
         }
 
         #use {
-            position: absolute;
             top: 85px;
             right: 0;
             font-size: 16px;
@@ -175,6 +130,44 @@ body {
             color: red;
             text-align: center;
         }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 14px;
+            }
+            .container {
+                padding: 10px;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 1024px) {
+            body {
+                font-size: 16px;
+            }
+            .container {
+                padding: 20px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            body {
+                font-size: 18px;
+            }
+            .container {
+                padding: 30px;
+            }
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .item {
+            flex: 1 1 200px;
+            margin: 10px;
+        }
     </style>
 </head>
 <body>
@@ -189,7 +182,7 @@ body {
             
             <label for="password">Password</label>
             <input type="password" id="password" name="password" required>
-            <button class="styled-button" onclick="window.location.href='index Material Page.html'">Login</button>
+            <button type="submit" class="styled-button">Login</button>
         </form>
         <p id="create">You don't have an account? <a href="#" id="showSignup">Create a new account</a></p>
         <div id="login-error-message">Invalid username or password.</div>
@@ -227,19 +220,13 @@ body {
         const visitCountElement = document.getElementById('visit-count');
         let visitCount = localStorage.getItem('visitCount');
         
-        // Check if visitCount exists in localStorage
         if (!visitCount) {
-            // First visit, initialize count
             visitCount = 1;
         } else {
-            // Increment the existing visit count
             visitCount = parseInt(visitCount) + 1;
         }
         
-        // Store the updated visit count in localStorage
         localStorage.setItem('visitCount', visitCount);
-        
-        // Display the visit count
         visitCountElement.textContent = visitCount;
 
         // Toggle between login and signup forms
@@ -294,11 +281,11 @@ body {
             const storedPassword = localStorage.getItem('password');
             
             if (username === storedUsername && hashedPassword === storedPassword) {
-                window.location.href = 'Material page.html'; 
+                window.location.href = 'index Material Page.html'; 
             } else {
                 document.getElementById('login-error-message').style.display = 'block';
             }
         });
     </script>
 </body>
-</
+</html>
