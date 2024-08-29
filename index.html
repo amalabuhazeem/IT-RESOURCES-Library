@@ -182,7 +182,7 @@
             
             <label for="password">Password</label>
             <input type="password" id="password" name="password" required>
-            <button type="submit" class="styled-button">Login</button>
+            <button type="button" class="styled-button" onclick="handleLogin()">Login</button>
         </form>
         <p id="create">You don't have an account? <a href="#" id="showSignup">Create a new account</a></p>
         <div id="login-error-message">Invalid username or password.</div>
@@ -270,12 +270,10 @@
         });
 
         // Handle login form submission
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
-            event.preventDefault(); 
-
+        function handleLogin() {
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
-            const hashedPassword = btoa(password); 
+            const hashedPassword = btoa(password); // Simple encoding for demonstration purposes
 
             const storedUsername = localStorage.getItem('username');
             const storedPassword = localStorage.getItem('password');
@@ -285,7 +283,7 @@
             } else {
                 document.getElementById('login-error-message').style.display = 'block';
             }
-        });
+        }
     </script>
 </body>
 </html>
