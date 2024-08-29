@@ -5,50 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IT RESOURCES</title>
     <style>
-        		/* الأنماط الأساسية التي تنطبق على جميع الأجهزة */
-body {
-  font-family: Arial, sans-serif;
-}
-
-/* الأنماط للأجهزة التي عرضها أقل من 768 بكسل (مثل الهواتف الذكية) */
-@media (max-width: 768px) {
-  body {
-    font-size: 14px;
-  }
-  .container {
-    padding: 10px;
-  }
-}
-
-/* الأنماط للأجهزة التي عرضها بين 768 و 1024 بكسل (مثل الأجهزة اللوحية) */
-@media (min-width: 768px) and (max-width: 1024px) {
-  body {
-    font-size: 16px;
-  }
-  .container {
-    padding: 20px;
-  }
-}
-
-/* الأنماط للأجهزة التي عرضها أكبر من 1024 بكسل (مثل أجهزة الكمبيوتر المكتبية) */
-@media (min-width: 1024px) {
-  body {
-    font-size: 18px;
-  }
-  .container {
-    padding: 30px;
-  }
-}
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-
-.item {
-  flex: 1 1 200px; /* يعني أن العناصر يمكن أن تنمو وتقلص مع الحفاظ على عرض لا يقل عن 200 بكسل */
-  margin: 10px;
-}
         /* الأنماط الأساسية */
         body {
             background-color: #6C3EB7;
@@ -56,23 +12,18 @@ body {
             color: white;
             margin: 0;
             padding: 0;
+            font-size: 18px;
+            text-align: center;
         }
 
         pre {
-            position: absolute;
-            top: 10px;
-            left: 300px;
-            font-size: 70px;
-            color: white;
+            font-size: 2em;
+            margin: 20px;
         }
 
-        #image-container {
-            position: absolute;
-            top: 250px;
-            left: 150px;
-            width: 350px;
+        #image-container, #image-document {
+            max-width: 100%;
             height: auto;
-            border: 2px solid #6C3EB7;
         }
 
         .styled-button {
@@ -84,63 +35,24 @@ body {
             text-decoration: none;
             display: inline-block;
             font-size: 16px;
-            margin: 4px 2px;
+            margin: 10px 0;
             cursor: pointer;
             border-radius: 4px;
             transition: background-color 0.3s;
-            width: 100%;
-            height: 50px;
         }
 
         .styled-button:hover {
             background-color: #45a049;
         }
 
-        #h1, #h, #use {
-            position: absolute;
-            color: white;
-            font-size: 20px;
-        }
-
-        #h1 {
-            top: 675px;
-            right: 20px;
-        }
-
-        #h {
-            top: 620px;
-            right: 10px;
-        }
-
-        #use {
-            top: 85px;
-            right: 0;
-            font-size: 16px;
-        }
-
-        #image-document {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100px;
-            height: auto;
-            border: 2px solid #6C3EB7;
-        }
-
-        #visit {
-            position: absolute;
-            top: 625px;
-            left: 200px;
-        }
-
         #loginForm, #signupForm {
-            position: absolute;
-            top: 350px;
-            right: 300px;
             border-radius: 5px;
             padding: 20px;
             background-color: rgba(0, 0, 0, 0.5);
-            width: 300px;
+            width: 90%;
+            max-width: 400px;
+            margin: auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         label {
@@ -150,8 +62,11 @@ body {
 
         input {
             width: calc(100% - 8px);
-            padding: 4px;
+            padding: 10px;
             margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            font-size: 16px;
         }
 
         #create, #error-message {
@@ -175,12 +90,17 @@ body {
             text-align: center;
         }
 
+        #visit {
+            margin-top: 20px;
+        }
+
+        /* الأنماط التكيفية */
         @media (max-width: 768px) {
             body {
                 font-size: 14px;
             }
-            .container {
-                padding: 10px;
+            pre {
+                font-size: 1.5em;
             }
         }
 
@@ -188,8 +108,8 @@ body {
             body {
                 font-size: 16px;
             }
-            .container {
-                padding: 20px;
+            pre {
+                font-size: 1.8em;
             }
         }
 
@@ -197,20 +117,9 @@ body {
             body {
                 font-size: 18px;
             }
-            .container {
-                padding: 30px;
+            pre {
+                font-size: 2em;
             }
-        }
-
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-        }
-
-        .item {
-            flex: 1 1 200px;
-            margin: 10px;
         }
     </style>
 </head>
@@ -278,14 +187,12 @@ body {
             event.preventDefault();
             document.getElementById('loginSection').style.display = 'none';
             document.getElementById('signupSection').style.display = 'block';
-            document.getElementById('h1').style.display = 'block';
         });
 
         document.getElementById('showLogin').addEventListener('click', function(event) {
             event.preventDefault();
             document.getElementById('signupSection').style.display = 'none';
             document.getElementById('loginSection').style.display = 'block';
-            document.getElementById('h1').style.display = 'block';
         });
 
         // Validate signup form
