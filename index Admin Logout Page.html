@@ -3,53 +3,10 @@
 <head>
     <title>Admin Logout Page</title>
     <style>
-        		/* الأنماط الأساسية التي تنطبق على جميع الأجهزة */
-body {
-  font-family: Arial, sans-serif;
-}
-
-/* الأنماط للأجهزة التي عرضها أقل من 768 بكسل (مثل الهواتف الذكية) */
-@media (max-width: 768px) {
-  body {
-    font-size: 14px;
-  }
-  .container {
-    padding: 10px;
-  }
-}
-
-/* الأنماط للأجهزة التي عرضها بين 768 و 1024 بكسل (مثل الأجهزة اللوحية) */
-@media (min-width: 768px) and (max-width: 1024px) {
-  body {
-    font-size: 16px;
-  }
-  .container {
-    padding: 20px;
-  }
-}
-
-/* الأنماط للأجهزة التي عرضها أكبر من 1024 بكسل (مثل أجهزة الكمبيوتر المكتبية) */
-@media (min-width: 1024px) {
-  body {
-    font-size: 18px;
-  }
-  .container {
-    padding: 30px;
-  }
-}
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-
-.item {
-  flex: 1 1 200px; /* يعني أن العناصر يمكن أن تنمو وتقلص مع الحفاظ على عرض لا يقل عن 200 بكسل */
-  margin: 10px;
-}
+        /* الأنماط الأساسية التي تنطبق على جميع الأجهزة */
         body {
+            font-family: Arial, sans-serif;
             background-color: #3E5C76;
-            font-family: sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -58,6 +15,36 @@ body {
             margin: 0;
             color: white;
             text-align: center;
+        }
+
+        /* الأنماط للأجهزة التي عرضها أقل من 768 بكسل (مثل الهواتف الذكية) */
+        @media (max-width: 768px) {
+            body {
+                font-size: 14px;
+            }
+            .container {
+                padding: 10px;
+            }
+        }
+
+        /* الأنماط للأجهزة التي عرضها بين 768 و 1024 بكسل (مثل الأجهزة اللوحية) */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            body {
+                font-size: 16px;
+            }
+            .container {
+                padding: 20px;
+            }
+        }
+
+        /* الأنماط للأجهزة التي عرضها أكبر من 1024 بكسل (مثل أجهزة الكمبيوتر المكتبية) */
+        @media (min-width: 1024px) {
+            body {
+                font-size: 18px;
+            }
+            .container {
+                padding: 30px;
+            }
         }
 
         .container {
@@ -72,7 +59,7 @@ body {
             margin-bottom: 1em;
         }
 
-        pre {
+        p {
             font-size: 40px;
             margin-bottom: 1em;
         }
@@ -105,10 +92,10 @@ body {
 <body>
     <div class="container">
         <h1>Thank you for your administration</h1>
-        <pre>We appreciate your contributions to managing the website.</pre>
-        <pre>Feel free to manage content or start a chat.</pre>
+        <p>We appreciate your contributions to managing the website.</p>
+        <p>Feel free to manage content or start a chat.</p>
         
-        <a href="index .html" target="_blank">
+        <a href="index.html" target="_blank">
             <button>Close</button>
         </a>
     </div>
