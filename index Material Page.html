@@ -93,9 +93,27 @@ body {
             width: 100px;
             height: 50px;
         }
-        button:hover {
-            background-color: #45a049;
+       button {
+            background-color: #1877F2;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
+
+        button:hover {
+            background-color: #155ab5;
+            transform: scale(1.05);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
         #com {
             color: black;
             width: 150px;
